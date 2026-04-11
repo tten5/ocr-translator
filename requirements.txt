@@ -1,0 +1,6 @@
+pillow
+pytesseract
+mss
+numpy
+deep-translator
+python-dotenv
