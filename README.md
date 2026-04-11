@@ -9,3 +9,8 @@ python -m pip install -r requirements.txt
 ```
 python main.py
 ```
+
+## Translator 
+
+zh-CN: simplified chinese 
+zh-TW: traditional chinese
