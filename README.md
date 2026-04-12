@@ -14,3 +14,7 @@ python main.py
 
 zh-CN: simplified chinese 
 zh-TW: traditional chinese
+
+## Not detect well?
+
+Try Win + Shift + T to use Window ocr, copy the text to box, then select and click "Translate Selection" button

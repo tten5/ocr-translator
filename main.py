@@ -23,6 +23,7 @@ class ScreenTranslator:
 
         tk.Button(root, text="Select Area", command=self.start_selection).pack(pady=5)
         tk.Button(root, text="Clear", command=self.clear_text).pack(pady=5)
+        tk.Button(root, text="Translate Selection", command=self.translate_selection).pack(pady=5)
 
         frame = tk.Frame(root)
         frame.pack(fill=tk.BOTH, expand=True)
@@ -140,6 +141,28 @@ class ScreenTranslator:
         self.text_box.insert(tk.END, text + "\n" + translated + "\n\n")
         self.text_box.see(tk.END)
 
+    def translate_selection(self):
+        try:
+            selected_text = self.text_box.get(tk.SEL_FIRST, tk.SEL_LAST)
+        except tk.TclError:
+            messagebox.showinfo("Info", "Please select text first")
+            return
+
+        if not selected_text.strip():
+            return
+
+        try:
+            clean_selected_text = "".join(selected_text.split())
+            translated = GoogleTranslator(
+                source="zh-CN",
+                target="en"
+            ).translate(clean_selected_text)
+        except Exception as e:
+            translated = str(e)
+
+        # Insert translation right after selection
+        self.text_box.insert(tk.INSERT, f"\n→ {translated}\n")
+        self.text_box.see(tk.END)
 
 if __name__ == "__main__":
     root = tk.Tk()
