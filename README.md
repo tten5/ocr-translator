@@ -27,7 +27,7 @@ This app does 2 things
 python -m venv venv3 && call venv3\Scripts\activate.bat && python -m pip install -r requirements.txt
 ```
 
-- Then run 
+- Then copy paste this command and enter 
 ```bash
 python main.py
 ```
@@ -35,7 +35,7 @@ python main.py
 - As long as you are still inside the same terminal, you just need to re-run `python main.py` if you accidentally close the app.
 
 ## After the first installation
-- After the first installation, every time you open a new terminal, please run 
+- After the first installation, every time you open a new terminal, please copy paste this command and enter  
 ```bash
 venv3\Scripts\activate.bat
 ```
