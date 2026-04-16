@@ -1,8 +1,7 @@
-pillow
-pytesseract
-mss
-numpy
-deep-translator
-python-dotenv
-paddleocr
+pillow==12.2.0
+mss==10.1.0
+numpy==2.4.4
+deep-translator==1.11.4
+python-dotenv==1.2.2
+paddleocr==3.4.1
 paddlepaddle==3.3.1
