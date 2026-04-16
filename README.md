@@ -47,7 +47,8 @@ python main.py
 - As long as you are still inside the same terminal, you just need to re-run `python main.py` if you accidentally close the app.
 
 ## You want to change ocr source language and translator source language?
-- Find the line "# CONFIG HERE" at the bottom of [main.py](./main.py) file
+- Use notepad to open [main.py](./main.py) file
+- Find the line "# CONFIG HERE" at the bottom of the file
 - Then change `ocr_src_lang` and ` translator_src_lang` (remember to put the text inside single-quotation mark `''`)
 
 ## How to use 
@@ -57,6 +58,6 @@ We have 3 buttons
 - Translate Selection: Sometimes you want to copy and paste text instead of "select area" and rely on OCR. Paste the text to the text box, then use mouse to select it, then click this button for translation.
 
 ## Tips
-- You should select the entire speech bubble, not each line (or column) separately. The idea is that if those lines (or columns) are meant to be read together, you should select them together.
+- You should select the entire speech bubble per each drag. The idea is that if those lines (or columns) are meant to be read together, you should select them together.
 - If the translation sounds weird, it’s likely that the selected area is off, or that you included too many or too few lines. Please try selecting again.
 
