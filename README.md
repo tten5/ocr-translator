@@ -5,36 +5,49 @@ This app does 2 things
 - OCR: Scan the selected area to extract the text 
 - Translator: Get the text and feed it to Google Translate API 
 
-## Install
+## First installation
+
 - Download Python 3.13 (Must be 3.13): https://www.python.org/downloads/release/python-31313/ 
     - Scroll down and find `Windows installer (64-bit)`, download it and install 
     - What is Python? It is the language and environment to run this app
 
-- Then open any terminal (Terminal is the box that allow you to type command in) and run these commands one by one   
-    - Command Prompt (The built-in terminal of Windows, please use this if you don't have or don't want to install Git Bash)
-    ```
-    python -m venv venv3
-    venv\Scripts\activate.bat
-    python -m pip install -r requirements.txt
-    ```
+- Download this app as zip and extract it into `ocr-translator` folder. Open `ocr-translator`.
 
-    - Git Bash
-    ```
-    python -m venv venv3
-    source venv/Scripts/activate
-    python -m pip install -r requirements.txt
-    ```
+- Click the address bar at the top (the part that shows the folder path like C:\Users\Name\Downloads/ocr-translator)
+- You’ll see the path becomes editable (text is highlighted)
+- Type `cmd` and enter
 
+![how to open cmd](assets/pic001.png)
 
-## You want to change ocr source language and translator source language?
-- Find the line "# CONFIG HERE" in `main.py`
-- Then change `ocr_src_lang` and ` translator_src_lang` (remember to put the value inside `''`)
+- Make sure it shows something like this `C:\Users\Name\Downloads\ocr-translator` (the actual path based on where you put your folder)
 
-## Run 
-
+- Copy this whole command, paste to the terminal, then enter
+```bash
+python -m venv venv3 && call venv3\Scripts\activate.bat && python -m pip install -r requirements.txt
 ```
+
+- Then run 
+```bash
 python main.py
 ```
+
+- As long as you are still inside the same terminal, you just need to re-run `python main.py` if you accidentally close the app.
+
+## After the first installation
+- After the first installation, every time you open a new terminal, please run 
+```bash
+venv3\Scripts\activate.bat
+```
+first. 
+- Then run 
+```bash
+python main.py
+```
+- As long as you are still inside the same terminal, you just need to re-run `python main.py` if you accidentally close the app.
+
+## You want to change ocr source language and translator source language?
+- Find the line "# CONFIG HERE" at the bottom of [main.py](./main.py) file
+- Then change `ocr_src_lang` and ` translator_src_lang` (remember to put the text inside single-quotation mark `''`)
 
 ## How to use 
 We have 3 buttons
