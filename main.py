@@ -10,14 +10,23 @@ import mss
 from PIL import Image
 from deep_translator import GoogleTranslator
 
+from paddleocr import PaddleOCR
+import numpy as np
+
 load_dotenv()
 
 pytesseract.pytesseract.tesseract_cmd = os.getenv("TESSERACT_PATH")
 
+PADDLE_MODEL = 'paddle'
+TESSERACT_MODEL = 'tesseract'
+
 
 class ScreenTranslator:
-    def __init__(self, root):
+    def __init__(self, root, source_lang, ocr_model):
         self.root = root
+        self.source_lang = source_lang
+        self.ocr_model = ocr_model
+
         self.root.title("Screen Translator")
         self.root.geometry("300x400")
 
@@ -39,6 +48,18 @@ class ScreenTranslator:
         self.start_x = 0
         self.start_y = 0
         self.rect = None
+
+        if(self.ocr_model == PADDLE_MODEL):
+            # Paddle
+            # print(PaddleOCR.__init__.__code__.co_varnames)
+
+            self.ocr = PaddleOCR(
+                lang='ch',          # Chinese
+                use_textline_orientation=True,
+                enable_mkldnn=False,  # prevents MKLDNN/PIR crash
+            )
+        else:
+            self.ocr = None
 
     # ---------------- UI ----------------
 
@@ -124,7 +145,20 @@ class ScreenTranslator:
 
         image = Image.frombytes("RGB", img.size, img.rgb)
 
-        text = pytesseract.image_to_string(image, lang="chi_sim_vert")
+        if (self.ocr_model == TESSERACT_MODEL):
+            text = pytesseract.image_to_string(image, lang="chi_sim_vert")
+        else:
+            # Convert PIL → numpy (PaddleOCR needs numpy array)
+            img_np = np.array(image)
+
+            result = self.ocr.predict(img_np)
+
+            # Extract text
+            text = ""
+            for item in result:
+                rec_texts = item.get("rec_texts", [])
+                text += "\n".join(reversed(rec_texts)) # reverse because manga read from right to left
+            text = text.strip()
 
         if not text.strip():
             messagebox.showinfo("Result", "No text detected")
@@ -132,7 +166,7 @@ class ScreenTranslator:
 
         try:
             translated = GoogleTranslator(
-                source="zh-CN",
+                source=self.source_lang,
                 target="en"
             ).translate("".join(text.split()))
         except Exception as e:
@@ -154,7 +188,7 @@ class ScreenTranslator:
         try:
             clean_selected_text = "".join(selected_text.split())
             translated = GoogleTranslator(
-                source="zh-CN",
+                source=self.source_lang,
                 target="en"
             ).translate(clean_selected_text)
         except Exception as e:
@@ -166,5 +200,12 @@ class ScreenTranslator:
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = ScreenTranslator(root)
+    # zh-CN
+    # zh-TW
+    source_lang='zh-CN'
+
+    # tesseract 
+    # paddle
+    ocr_model = PADDLE_MODEL
+    app = ScreenTranslator(root, source_lang, ocr_model)
     root.mainloop()

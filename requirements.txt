@@ -4,3 +4,5 @@ mss
 numpy
 deep-translator
 python-dotenv
+paddleocr
+paddlepaddle==3.3.1
