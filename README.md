@@ -12,6 +12,7 @@ This app does 2 things
     - What is Python? It is the language and environment to run this app
 
 - Download this app as zip and extract it into `ocr-translator` folder. Open `ocr-translator`.
+![download this app](assets/pic002.png)
 
 - Click the address bar at the top (the part that shows the folder path like C:\Users\Name\Downloads/ocr-translator)
 - You’ll see the path becomes editable (text is highlighted)
