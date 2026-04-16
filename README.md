@@ -2,7 +2,7 @@
 
 ## Overview
 This app does 2 things
-- OCR: Scan the selected area to extract the text 
+- OCR: Scan the selected area to extract the text. Currently, the code is set up to read vertical text, from right to left. so it will not work for other purposes.
 - Translator: Get the text and feed it to Google Translate API 
 
 ## First installation
@@ -60,4 +60,5 @@ We have 3 buttons
 ## Tips
 - You should select the entire speech bubble per each drag. The idea is that if those lines (or columns) are meant to be read together, you should select them together.
 - If the translation sounds weird, it’s likely that the selected area is off, or that you included too many or too few lines. Please try selecting again.
+- You can edit the text inside the textbox. Thus, you can copy, change, add, remove any text. Please use that ability together with `Translate Selection` button for more flexibility. Sometimes, a `!` gives different translation.
 
