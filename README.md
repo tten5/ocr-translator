@@ -35,7 +35,7 @@ python main.py
 - As long as you are still inside the same terminal, you just need to re-run `python main.py` if you accidentally close the app.
 
 ## After the first installation
-- After the first installation, every time you open a new terminal, please copy paste this command and enter  
+- After the first installation, every time you open a new terminal inside the `ocr-translator` folder, please copy paste this command and enter  
 ```bash
 venv3\Scripts\activate.bat
 ```
