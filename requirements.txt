@@ -1,4 +1,4 @@
-pillow==12.2.0
+pillow==12.3.0
 mss==10.1.0
 numpy==2.4.4
 deep-translator==1.11.4
